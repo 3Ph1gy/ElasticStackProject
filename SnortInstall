@@ -1,0 +1,21 @@
+#!bin/bash
+
+###Installing Pre-Reqs###
+sudo apt install -y gcc libpcre3-dev zlib1g-dev libpcap-dev openssl libssl-dev libnghttp2-dev libdumbnet-dev bison flex libdnet
+wget http://luajit.org/download/LuaJIT-2.0.5.tar.gz
+tar zxf LuaJIT-2.0.5.tar.gz
+cd LuaJIT-2.0.5
+make
+sudo make install
+
+###SNORT INSTALL###
+mkdir ~/snort_src && cd ~/snort_src
+wget https://www.snort.org/downloads/snort/daq-2.0.6.tar.gz
+tar -xvzf daq-2.0.6.tar.gz
+cd daq-2.0.6
+./configure && make && sudo make install
+cd ~/snort_src
+wget https://www.snort.org/downloads/snort/snort-2.9.12.tar.gz
+tar -xvzf snort-2.9.12.tar.gz 
+cd snort-2.9.12/
+./configure --enable-sourcefire && make && sudo make install
